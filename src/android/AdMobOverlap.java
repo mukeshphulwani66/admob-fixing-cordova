@@ -582,8 +582,8 @@ public class AdMobOverlap implements PluginDelegate {
 		// here we edit code
 		@Override
 		public void onRewardedVideoCompleted() {
-              fireAdEvent(EVENT_AD_WILLDISMISS, ADTYPE_REWARDVIDEO);
-                  }
+    	Toast.makeText(this, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show();
+			}
 
 		@Override
 		public void onRewardedVideoAdLoaded() {
