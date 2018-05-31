@@ -455,7 +455,7 @@ public class AdMobOverlap implements PluginDelegate {
 			rewardedVideo = MobileAds.getRewardedVideoAdInstance(plugin.getCordova().getActivity());
 			//
 			//rewardedVideo.setAdUnitId(this.rewardedVideoAdUnit);
-			rewardedVideo.setRewardedVideoAdListener(new MyRewardedVideoListener());	
+		
 		}		
 		
 		AdRequest.Builder builder = new AdRequest.Builder();
