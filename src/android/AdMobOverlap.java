@@ -25,6 +25,7 @@ import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.google.android.gms.ads.reward.RewardItem;
 
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -572,96 +573,6 @@ public class AdMobOverlap implements PluginDelegate {
     		//plugin.getCallbackContextKeepCallback().sendPluginResult(pr);    		
     	}
     }
-
-	class MyRewardedVideoListener implements RewardedVideoAdListener {
-		
-		@Override
-		public void onRewardedVideoAdFailedToLoad(int errorCode) {
-			Log.d(LOG_TAG, String.format("%s", "onRewardedVideoAdFailedToLoad"));
-		}
-		// here we edit code
-		@Override
-		public void onRewardedVideoCompleted() {
-    	Toast.makeText(this, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show();
-			}
-
-		@Override
-		public void onRewardedVideoAdLoaded() {
-			Log.d(LOG_TAG, String.format("%s", "onRewardedVideoAdLoaded"));
-		  
-    		if(rewardedVideoAdPreload) {
-    			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdPreloaded");
-    			pr.setKeepCallback(true);
-    			plugin.getCallbackContextKeepCallback().sendPluginResult(pr);
-    			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
-    			//pr.setKeepCallback(true);
-    			//plugin.getCallbackContextKeepCallback().sendPluginResult(pr);
-    		}
-    		
-    		PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdLoaded");
-    		pr.setKeepCallback(true);
-    		plugin.getCallbackContextKeepCallback().sendPluginResult(pr);
-    		//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
-    		//pr.setKeepCallback(true);
-    		//plugin.getCallbackContextKeepCallback().sendPluginResult(pr);		
-    		
-    		if(!rewardedVideoAdPreload) {
-				rewardedVideo.show();
-    		}		  
-		}
-
-		@Override
-		public void onRewardedVideoAdOpened() {
-			Log.d(LOG_TAG, String.format("%s", "onRewardedVideoAdOpened"));
-		}
-
-		@Override
-		public void onRewardedVideoStarted() {
-			Log.d(LOG_TAG, String.format("%s", "onRewardedVideoStarted"));
-		  
-    		PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdShown");
-    		pr.setKeepCallback(true);
-    		plugin.getCallbackContextKeepCallback().sendPluginResult(pr);
-    		//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
-    		//pr.setKeepCallback(true);
-    		//plugin.getCallbackContextKeepCallback().sendPluginResult(pr);		  
-		}
-
-		@Override
-		public void onRewardedVideoAdClosed() {
-			Log.d(LOG_TAG, String.format("%s", "onRewardedVideoAdClosed"));
-		  
-    		PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdHidden");
-    		pr.setKeepCallback(true);
-    		plugin.getCallbackContextKeepCallback().sendPluginResult(pr);
-    		//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
-    		//pr.setKeepCallback(true);
-    		//plugin.getCallbackContextKeepCallback().sendPluginResult(pr);		  
-		}
-
-		@Override
-		public void onRewardedVideoAdLeftApplication() {
-			Log.d(LOG_TAG, String.format("%s", "onRewardedVideoAdLeftApplication"));
-		}
-		
-		@Override
-		public void onRewarded(RewardItem reward) {
-			Log.d(LOG_TAG, String.format("%s", "onRewarded"));
-		  
-/*
-      String obj = __getProductShortName();
-      String json = String.format("{'adNetwork':'%s','adType':'%s','adEvent':'%s','rewardType':'%s','rewardAmount':%d}",
-              obj, ADTYPE_REWARDVIDEO, EVENT_AD_PRESENT, reward.getType(), reward.getAmount());
-*/			  
-		  
-			PluginResult pr = new PluginResult(PluginResult.Status.OK, "onRewardedVideoAdCompleted");
-			pr.setKeepCallback(true);
-			plugin.getCallbackContextKeepCallback().sendPluginResult(pr);
-			//PluginResult pr = new PluginResult(PluginResult.Status.ERROR);
-			//pr.setKeepCallback(true);
-			//callbackContextKeepCallback.sendPluginResult(pr);				  
-		}	
-	}
 	
     public void onPause(boolean multitasking) {
 		if (bannerView != null) {
@@ -681,4 +592,5 @@ public class AdMobOverlap implements PluginDelegate {
         }
     }
 }
+
 
